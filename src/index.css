@@ -351,6 +351,10 @@ main {
 .modal .close-modal img {
     width: 100%;
 }
+.modal .close-modal img{
+    cursor: pointer;
+
+}
 
 .modal .form {
     max-width: 80rem;
