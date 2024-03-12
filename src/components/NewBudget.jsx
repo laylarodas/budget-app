@@ -2,27 +2,29 @@ import React from 'react'
 import { useState } from 'react';
 import { Message } from './Message';
 
-export const NewBudget = ({budget, setBudget}) => {
+export const NewBudget = ({budget, setBudget, setIsValidBudget}) => {
 
     const [message, setMessage] = useState('');
-
+    
+    ;
     const handleBudget = (e) => {
         e.preventDefault();
         
-        if(!Number(budget) || Number(budget) < 0){
+        if(!budget || budget < 0){
             setMessage('The budget is invalid');
-        }else{
-
+            return;
         }
 
+        setMessage('');
+        setIsValidBudget(true);
     }
   return (
     <div className='container-budget container shadow'>
         <form action="" className='form' onSubmit={handleBudget}>
             <div className='field'>
                 <label htmlFor="">Define budget</label>
-                <input type="text" className='new-budget' placeholder='Add your budget' value={budget} onChange={(e)=>{
-                    setBudget(e.target.value)
+                <input type="number" className='new-budget' placeholder='Add your budget' value={budget} onChange={(e)=>{
+                    setBudget(Number(e.target.value))
                 }}/>
 
             </div>
